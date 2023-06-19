@@ -26,7 +26,7 @@ public class GameUIManager : MonoBehaviour
     private void Awake()
     {
         _mapName.text = "\n " + ParameteresForGame._nameOfMapForGame + "!";
-        SetVolumeText(_musicVolumeValueText);
+        SetVolumeText(_musicVolumeValueText, _soundVolumeValueText);
         _songNumberText.text = "#" + (PlayerPrefs.GetInt("SelectedTrackIndex") + 1).ToString();
     }
 
@@ -87,8 +87,8 @@ public class GameUIManager : MonoBehaviour
         _musicManager.NextTrack(_songNumberText);
     }
 
-    private void SetVolumeText(TMP_Text text)
+    private void SetVolumeText(TMP_Text musicText, TMP_Text soundText)
     {
-        _audioManager.SetCurentVolumeValueText(text);
+        _audioManager.SetCurentVolumeValueText(musicText, soundText);
     }
 }

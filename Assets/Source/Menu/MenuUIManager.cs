@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +23,11 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] private GameObject _selectColorPanel;
 
     [SerializeField] private ParameteresForGame parametersForGame;
+
+    [SerializeField] private AudioManager _audioManager;
+
+    [SerializeField] private TMP_Text _musicVolumeValueText;
+    [SerializeField] private TMP_Text _soundVolumeValueText;
 
     public void LoadGame()
     {
@@ -76,5 +82,15 @@ public class MenuUIManager : MonoBehaviour
     public void SettingsBackToMenu()
     {
         OpenClosedCanvas(_settingsCanvas, _settingsCamera, _menuCanvas, _menuCamera);
+    }
+
+    public void ChangeMusicVolume()
+    {
+        _audioManager.ChangeMusicVolumeValue(_musicVolumeValueText);
+    }
+
+    public void ChangeSoundVolume()
+    {
+        _audioManager.ChangeSoundVolumeValue(_soundVolumeValueText);
     }
 }

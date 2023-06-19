@@ -10,12 +10,13 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        float volumeValue = PlayerPrefs.GetFloat(MusicVolumeKey, 0.0f);
-        SetVolume(musicAudioMixer, volumeValue, MusicVolumeKey);
-        SetVolume(soundAudioMixer, volumeValue, SoundVolumeKey);
+        float musicVolume = PlayerPrefs.GetFloat(MusicVolumeKey);
+        Debug.Log(musicVolume);
+        float soundVolume = PlayerPrefs.GetFloat(SoundVolumeKey);
+        SetMusicVolume(musicAudioMixer, musicVolume, MusicVolumeKey);
     }
 
-    private void SetVolume(AudioMixerGroup mixer, float volume, string keyForPlayerPrefs)
+    private void SetMusicVolume(AudioMixerGroup mixer, float volume, string keyForPlayerPrefs)
     {
         mixer.audioMixer.SetFloat(keyForPlayerPrefs, volume * 100);
         PlayerPrefs.SetFloat(keyForPlayerPrefs, volume);
@@ -73,10 +74,11 @@ public class AudioManager : MonoBehaviour
         text.text = volumeInProcent + "%";
     }
 
-    public void SetCurentVolumeValueText(TMPro.TMP_Text text)
+    public void SetCurentVolumeValueText(TMPro.TMP_Text musicText, TMPro.TMP_Text soundText)
     {
         float musicVolume = PlayerPrefs.GetFloat(MusicVolumeKey);
         float soundVolume = PlayerPrefs.GetFloat(SoundVolumeKey);
-        text.text = musicVolume + 100 + "%";
+        musicText.text = (musicVolume + 100) + "%";
+        musicText.text = (soundVolume + 100) + "%";
     }
 }

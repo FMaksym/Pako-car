@@ -59,7 +59,7 @@ public class SelectCarUI : MonoBehaviour, ICanvas
 
     private void Awake()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         PlayerPrefs.SetInt("Coins", 50000);
         _moneyAmountText.text = PlayerPrefs.GetInt("Coins").ToString();
     }
