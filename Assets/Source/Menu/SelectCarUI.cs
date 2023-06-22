@@ -3,18 +3,15 @@ using UnityEngine;
 using TMPro;
 using System;
 using PlayerPrefs = PlayerPrefsWrapper;
-using Zenject;
 
 public class SelectCarUI : MonoBehaviour, ICanvas
 {
-    //[Header("Selected Car")]
-    //[SerializeField] private GameObject _selectedCar;
+    [Header("Sound Manager")]
+    [SerializeField] private SoundInMenuManager soundManager;
 
-    [Header("Sounds")]
-    [SerializeField] private AudioClip _notEnoughtCoinSound;
-    [SerializeField] private AudioClip _buyGunSound;
-    [SerializeField] private AudioClip _equipGunSound;
-    [SerializeField] private AudioClip _buttonSound;
+    [SerializeField] private AudioClip _buyCar;
+    [SerializeField] private AudioClip _selectCar;
+    [SerializeField] private AudioClip _notEnoughtMoney;
 
     [Header("Amount Money Text")]
     [SerializeField] TMP_Text _moneyAmountText;
@@ -67,7 +64,6 @@ public class SelectCarUI : MonoBehaviour, ICanvas
     private void Start()
     {
         selectColorOfCarUIManager = _autofiller.selectColorOfCarUIManager;
-        //Coins = GetComponent<Coins>();
         PlayerPrefs.SetInt("SelectedCar", 0);
         _currentCarIndex = PlayerPrefs.GetInt("SelectedCar");
         SetStartedParametres(_currentCarIndex);
@@ -144,8 +140,6 @@ public class SelectCarUI : MonoBehaviour, ICanvas
             _selectCarButton.SetActive(false);
             _equipedCarButton.SetActive(false);
         }
-
-        //PlayerPrefs.SetInt("SelectedCar", _currentCarIndex);
     }
 
     public void ChangePrevious()
@@ -190,15 +184,12 @@ public class SelectCarUI : MonoBehaviour, ICanvas
             _selectCarButton.SetActive(false);
             _equipedCarButton.SetActive(false);
         }
-        //PlayerPrefs.SetInt("SelectedCar", _currentCarIndex);
     }
 
     public void OnClickSelectCar()
     {
         bool purchased;
         UnchoisenCar();
-
-        //AudioSource.PlayClipAtPoint(_equipGunSound, Camera.main.transform.position, 50f);
 
         purchased = PlayerPrefs.GetBool($"{_car[_currentCarIndex].CarConfig.Name}");
 
@@ -210,6 +201,7 @@ public class SelectCarUI : MonoBehaviour, ICanvas
         PlayerPrefs.SetInt("SelectedCar", _currentCarIndex);
         _selectCarButton.SetActive(false);
         _equipedCarButton.SetActive(true);
+        soundManager.EventAudioSound(_notEnoughtMoney);
     }
 
     public void OnClickBuyCar()
@@ -217,6 +209,7 @@ public class SelectCarUI : MonoBehaviour, ICanvas
         int carPrice = Convert.ToInt32(_priceText.text);
         if (_coins.IsEnought(carPrice))
         {
+            soundManager.EventAudioSound(_buyCar);
             _coins.SpendCoins(carPrice);
             
             _car[_currentCarIndex].IsBuy = true;
@@ -227,11 +220,10 @@ public class SelectCarUI : MonoBehaviour, ICanvas
             _equipedCarButton.SetActive(false);
 
             _moneyAmountText.text = PlayerPrefs.GetInt("Coins").ToString();
-            //AudioSource.PlayClipAtPoint(_buyGunSound, Camera.main.transform.position, 50f);
         }
         else
         {
-            //AudioSource.PlayClipAtPoint(_notEnoughtCoinSound, Camera.main.transform.position, 50f);
+            soundManager.EventAudioSound(_notEnoughtMoney);
         }
     }
 

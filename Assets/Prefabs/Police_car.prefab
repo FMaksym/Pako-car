@@ -97,8 +97,8 @@ GameObject:
   - component: {fileID: 4069300058390714689}
   - component: {fileID: 8097951471026486960}
   - component: {fileID: 4069300058390714692}
-  - component: {fileID: 4069300058390714691}
   - component: {fileID: 4069300058390714717}
+  - component: {fileID: 3012674127303835269}
   m_Layer: 0
   m_Name: Police_car
   m_TagString: Untagged
@@ -135,13 +135,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4070364817684708301}
   serializedVersion: 2
-  m_Mass: 50
-  m_Drag: 0
+  m_Mass: 100
+  m_Drag: 0.05
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!65 &4069300058390714689
 BoxCollider:
@@ -154,7 +154,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.95, y: 0.7653349, z: 2.2525296}
+  m_Size: {x: 0.95, y: 0.7653349, z: 2.25}
   m_Center: {x: 0, y: 0.294562, z: 0.011872232}
 --- !u!65 &8097951471026486960
 BoxCollider:
@@ -181,22 +181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a597b7c134e8d994dbf2d3e720f9833a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  policeCar: {fileID: 4069300058390714691}
+  policeCar: {fileID: 3012674127303835269}
+  _destroySound: {fileID: 8300000, guid: e0ad1d9e3e918b5419f26fd444b2f651, type: 3}
   _explosionParticle: {fileID: 3488358823809485810}
---- !u!114 &4069300058390714691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4070364817684708301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a3d85d96f39d9c4bbacf42bdfd4d95f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _carController: {fileID: 0}
-  followSpeed: 4
 --- !u!114 &4069300058390714717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +196,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa8778f136fbf34a90a3de0e86cd324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3012674127303835269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4070364817684708301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a6f454dddf2184984faad6bc8608ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _carController: {fileID: 0}
+  speed: 8
+  rotationSpeed: 200
+  detectionRadius: 200
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  avoidDistance: 25
 --- !u!1 &4070531277876472671
 GameObject:
   m_ObjectHideFlags: 0

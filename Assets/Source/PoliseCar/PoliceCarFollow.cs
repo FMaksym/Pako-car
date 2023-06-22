@@ -18,7 +18,7 @@ public class PoliceCarFollow : MonoBehaviour
         _carController = carController;
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         // Calculate direction to the player's car
         Vector3 directionToPlayer = _carController.transform.position - transform.position;
@@ -31,7 +31,7 @@ public class PoliceCarFollow : MonoBehaviour
         if (directionToPlayer.magnitude > 0.1f && followSpeed > 0f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
-            rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, targetRotation, Time.deltaTime * 200f));
+            rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, targetRotation, Time.fixedDeltaTime * 200f));
         }
     }
 }

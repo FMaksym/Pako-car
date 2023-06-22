@@ -6,6 +6,7 @@ public class PoliceCarInstaller : MonoInstaller
     public GameObject policeCarPrefab;
     public override void InstallBindings()
     {
-        Container.Bind<PoliceCarSpawner>().AsSingle();
+        //Container.Bind<PoliceCarSpawner>().AsSingle();
+        Container.Bind<Follow>().AsSingle();
     }
 }

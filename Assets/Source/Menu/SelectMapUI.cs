@@ -8,24 +8,29 @@ public class SelectMapUI : MonoBehaviour
 {
     [Header("Maps list")]
     [SerializeField] private List<MapData> _map;
+
+    [Header("Sound Manager")]
+    [SerializeField] private SoundInMenuManager soundManager;
+
+    [SerializeField] private AudioClip _buyMap;
+    [SerializeField] private AudioClip _selectMap;
+    [SerializeField] private AudioClip _notEnoughtMoney;
+
     [SerializeField] private CoinsAmount _coins;
 
     [SerializeField] private GameObject _buyMapButton;
     [SerializeField] private GameObject _selectMapButton;
     [SerializeField] private GameObject _selectedMapButton;
 
-    //[SerializeField] private GameObject _mapInfoForBuy;
-    //[SerializeField] private GameObject _mapInfo;
     [SerializeField] private GameObject _priceInfo;
 
     [SerializeField] private TMP_Text _moneyAmountText;
     [SerializeField] private TMP_Text _priceText;
-
     [SerializeField] private TMP_Text _mapName;
 
     [SerializeField] private string _selectedMap;
-    [SerializeField] private int _selectedMapIndex;
 
+    [SerializeField] private int _selectedMapIndex;
     [SerializeField] private int _currentMapIndex;
 
     [SerializeField] private ParameteresForGame _parametersForGame;
@@ -112,8 +117,6 @@ public class SelectMapUI : MonoBehaviour
             _selectMapButton.SetActive(false);
             _selectedMapButton.SetActive(false);
         }
-
-        //PlayerPrefs.SetInt("SelectedCar", _currentCarIndex);
     }
 
     public void ChangePrevious()
@@ -154,20 +157,18 @@ public class SelectMapUI : MonoBehaviour
             _selectMapButton.SetActive(false);
             _selectedMapButton.SetActive(false);
         }
-
-        //PlayerPrefs.SetInt("SelectedCar", _currentCarIndex);
     }
 
     public void OnClickSelectMap()
     {
         UnchoisenMap();
-        //AudioSource.PlayClipAtPoint(_equipGunSound, Camera.main.transform.position, 50f);
+
+        //soundManager.EventAudioSound(_selectMap);
+
         _map[_currentMapIndex].IsSelected = true;
 
         _selectedMap = _map[_currentMapIndex].MapConfig.MapName;
         _selectedMapIndex = _map[_currentMapIndex].MapConfig.MapIndex;
-
-        Debug.Log(" " + _selectedMap + " " + _selectedMapIndex);
 
         _parametersForGame.GettingMap(_selectedMap, _selectedMapIndex);
 
@@ -192,28 +193,21 @@ public class SelectMapUI : MonoBehaviour
             _selectedMapButton.SetActive(false);
 
             _moneyAmountText.text = PlayerPrefs.GetInt("Coins").ToString();
-            //AudioSource.PlayClipAtPoint(_buyGunSound, Camera.main.transform.position, 50f);
+            soundManager.EventAudioSound(_buyMap);
         }
         else
         {
-            //AudioSource.PlayClipAtPoint(_notEnoughtCoinSound, Camera.main.transform.position, 50f);
+            soundManager.EventAudioSound(_notEnoughtMoney);
         }
     }
-
-    //public void SetFinalyMapParametres()
-    //{
-    //    ParametresForGameFromMenu._selectedMapName = _selectedMap;
-    //}
 
     private void UnchoisenMap()
     {
         foreach (MapData map in _map)
         {
-            //_currentMapIndex = 0;
             if (map.IsSelected)
             {
                 map.IsSelected = false;
-                //_currentMapIndex++;
             }
         }
     }

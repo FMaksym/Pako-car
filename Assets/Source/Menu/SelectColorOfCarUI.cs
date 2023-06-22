@@ -9,6 +9,13 @@ public class SelectColorOfCarUI : MonoBehaviour, ICanvas
 {
     [SerializeField] private List<ListOfCarsColor> _listOfCarsColor;
 
+    [Header("Sound Manager")]
+    [SerializeField] private SoundInMenuManager soundManager;
+
+    [SerializeField] private AudioClip _buyColor;
+    [SerializeField] private AudioClip _selectColor;
+    [SerializeField] private AudioClip _notEnoughtMoney;
+
     [SerializeField] private GameObject _selectedCar;
 
     [SerializeField] private GameObject _buyCarColorButton;
@@ -65,7 +72,6 @@ public class SelectColorOfCarUI : MonoBehaviour, ICanvas
         {
             int Index = 0;
             _listOfCarsColor[_selectCarUIManager._currentCarIndex]._carColorList[Index].gameObject.SetActive(false);
-            Index++;
         }
         Debug.Log("All cars false");
         _listOfCarsColor[_selectCarUIManager._currentCarIndex]._carColorList[index].gameObject.SetActive(true);
@@ -111,32 +117,6 @@ public class SelectColorOfCarUI : MonoBehaviour, ICanvas
         bool purchased = PlayerPrefs.GetBool($"{_listOfCarsColor[_selectCarUIManager._currentCarIndex]._carColorList[_currentColorIndex].Name}");
 
         CheckingPurchaseMachine(purchased);
-        //if (purchased)
-        //{
-        //    ClosingOpeningInfoPanelsIfBuyingOrPurchased();
-        //    _ColorOfCarInInfoBorder.text = _listOfCarsColor[_selectCarUIManager._currentCarIndex]._carColorList[_currentColorIndex].Color.ToString();
-        //    _buyCarColorButton.SetActive(false);
-        //    if (_listOfCarsColor[_selectCarUIManager._currentCarIndex]._carColorList[_currentColorIndex].IsSelected)
-        //    {
-        //        _selectCarColorButton.SetActive(false);
-        //        _selectedCarColorButton.SetActive(true);
-        //    }
-        //    else
-        //    {
-        //        _selectedCarColorButton.SetActive(false);
-        //        _selectCarColorButton.SetActive(true);
-        //    }
-        //}
-        //else
-        //{
-        //    _carColorInfoForBuy.SetActive(true);
-        //    _carColorInfo.SetActive(false);
-        //    _priceText.text = _listOfCarsColor[_selectCarUIManager._currentCarIndex]._carColorList[_currentColorIndex].Price.ToString();
-        //    _ColorOfCarInBuyBorder.text = _listOfCarsColor[_selectCarUIManager._currentCarIndex]._carColorList[_currentColorIndex].Color.ToString();
-        //    HideButtonsIfNotPurchased();
-        //}
-
-        //PlayerPrefs.SetInt("SelectedCar", _currentIndex);
     }
 
     public void ChangePrevious()
@@ -159,14 +139,12 @@ public class SelectColorOfCarUI : MonoBehaviour, ICanvas
     {
         UnchoisenCarColor(_currentColorIndex);
 
-        //AudioSource.PlayClipAtPoint(_equipGunSound, Camera.main.transform.position, 50f);
+        soundManager.EventAudioSound(_selectColor);
 
         _listOfCarsColor[_selectCarUIManager._currentCarIndex]._carColorList[_currentColorIndex].IsSelected = true;
         _selectedCar = _listOfCarsColor[_selectCarUIManager._currentCarIndex]._carColorList[_currentColorIndex]._modelForSelect;
 
         _parametersForGame.GettingCar(_selectedCar);
-
-        Debug.Log(" " + _selectedCar.gameObject.name);
 
         PlayerPrefs.SetInt($"SelectedColor {_selectCarUIManager._car[_selectCarUIManager._currentCarIndex].CarConfig.Name}", _currentColorIndex);
         _selectCarColorButton.SetActive(false);
@@ -191,12 +169,12 @@ public class SelectColorOfCarUI : MonoBehaviour, ICanvas
             _selectedCarColorButton.SetActive(false);
 
             _moneyAmountText.text = PlayerPrefs.GetInt("Coins").ToString();
-            //AudioSource.PlayClipAtPoint(_buyGunSound, Camera.main.transform.position, 50f);
+            soundManager.EventAudioSound(_buyColor);
         }
         else
         {
             ClosingOpeningPanelsIfNotPurchased();
-            //AudioSource.PlayClipAtPoint(_notEnoughtCoinSound, Camera.main.transform.position, 50f);
+            soundManager.EventAudioSound(_notEnoughtMoney);
         }
     }
 
@@ -270,13 +248,10 @@ public class SelectColorOfCarUI : MonoBehaviour, ICanvas
     public void OnClickBackToSelectCar()
     {
         _currentColorIndex = 0;
-        //_currentColorIndex++;
         foreach (ListOfCarsColor car in _listOfCarsColor)
         {
             car.gameObject.SetActive(false);
             car._carColorList[_currentColorIndex].gameObject.SetActive(false);
         }
-
-        //PlayerPrefs.SetInt("SelectedCar", 0);
     }
 }

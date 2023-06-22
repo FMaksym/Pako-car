@@ -16,6 +16,7 @@ public class GameUIManager : MonoBehaviour
 
     [SerializeField] private TMP_Text _mapName;
     [SerializeField] private TMP_Text _coinsText;
+    [SerializeField] private TMP_Text _coinsForGameText;
     [SerializeField] private TMP_Text _timeTextLosePanel;
     [SerializeField] private TMP_Text _recordTimeTextLosePanel;
     [SerializeField] private TMP_Text _changeCameraButtonText;
@@ -30,7 +31,7 @@ public class GameUIManager : MonoBehaviour
         _songNumberText.text = "#" + (PlayerPrefs.GetInt("SelectedTrackIndex") + 1).ToString();
     }
 
-    public void GameOver(string coinsText)
+    public void GameOver(string coinsText, int coinsForGame)
     {
         playerInterfaceCanvas.SetActive(false);
         loseCanvas.SetActive(true);
@@ -38,6 +39,7 @@ public class GameUIManager : MonoBehaviour
         _timeTextLosePanel.text = _timerController.TimeText.text;
         _recordTimeTextLosePanel.text = PlayerPrefs.GetString("RecordTimeStr");
 
+        _coinsForGameText.text = "+" + coinsForGame.ToString();
         _coinsText.text = coinsText;
     }
 

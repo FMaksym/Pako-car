@@ -51,7 +51,7 @@ public class CarDeath : MonoBehaviour
     IEnumerator WaitAndSetCoinsWalue(float time)
     {
         yield return new WaitForSeconds(time);
-        _gameUIManager.GameOver(PlayerPrefs.GetInt("Coins").ToString());
+        _gameUIManager.GameOver(PlayerPrefs.GetInt("Coins").ToString(), _earningCoins._allCoinsForGame);
     }
 }
  

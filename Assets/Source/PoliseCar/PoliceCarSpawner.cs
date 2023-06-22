@@ -9,6 +9,8 @@ public class PoliceCarSpawner : MonoBehaviour
     [SerializeField] private Transform parentTransform;
     [SerializeField] private GameObject policeCarPrefab;
 
+    public float TimeToSpawn;
+
     private Coroutine spawnCoroutine;
 
     private CarController carController;
@@ -26,13 +28,14 @@ public class PoliceCarSpawner : MonoBehaviour
     private void Start()
     {
         spawnCoroutine = StartCoroutine(SpawnPoliceCars());
+        TimeToSpawn = 2;
     }
 
     private IEnumerator SpawnPoliceCars()
     {
         while (!carCollision.IsLose)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(TimeToSpawn);
 
             if (_spawnPoints.Count > 0)
             {
@@ -40,8 +43,12 @@ public class PoliceCarSpawner : MonoBehaviour
                 Transform spawnPoint = _spawnPoints[randomIndex];
 
                 // Здесь происходит спавн PoliceCar с использованием Zenject для доступа к CarController
+                //container.InstantiatePrefab(policeCarPrefab, spawnPoint.position, spawnPoint.rotation, parentTransform)
+                //     .GetComponent<PoliceCarFollow>()
+                //     .SetCarController(carController);
+
                 container.InstantiatePrefab(policeCarPrefab, spawnPoint.position, spawnPoint.rotation, parentTransform)
-                     .GetComponent<PoliceCarFollow>()
+                     .GetComponent<Follow>()
                      .SetCarController(carController);
             }
         }

@@ -281,11 +281,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controll: 1
   steerInput: 0
-  _moveSpeed: 14
-  _steerAngle: 20
+  _moveSpeed: 8
+  _steerAngle: 18
   _drag: 0.98
-  _maxSpeed: 21
-  _traction: 3
+  _maxSpeed: 14
+  _traction: 1
   IsStearing: 0
   trailRCircle: {fileID: 8241370016180256365}
   trailLCircle: {fileID: 5290007315012438088}
@@ -524,6 +524,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6425769185464161952}
   - component: {fileID: 3016877347381301368}
+  - component: {fileID: 3650652333276352707}
   m_Layer: 0
   m_Name: Event Manager
   m_TagString: Untagged
@@ -556,6 +557,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d6fd3617d925024caa27fd77b1e9ddd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathCounter: {fileID: 0}
+--- !u!114 &3650652333276352707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268493328092435222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9c451adb2514b42bc4e681a6dd5333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2780244567818782299

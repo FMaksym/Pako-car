@@ -23,6 +23,9 @@ public class CarController : MonoBehaviour
     [SerializeField] private TrailRenderer trailRCircle;
     [SerializeField] private TrailRenderer trailLCircle;
 
+    public float steerSmoothing = 5f;
+    private float currentSteerInput;
+
     private Vector3 moveForce;
 
     private void Update()
@@ -51,7 +54,6 @@ public class CarController : MonoBehaviour
         {
             steerInput = Input.GetAxis("Horizontal");
         }
-
         transform.Rotate(Vector3.up * steerInput * moveForce.magnitude * _steerAngle * Time.deltaTime);
         if (steerInput > 0 || steerInput < 0)
         {

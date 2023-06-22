@@ -40,4 +40,14 @@ public class MusicManager : MonoBehaviour
 
         PlayerPrefs.SetInt(SelectedTrackIndexKey, selectedTrackIndex);
     }
+
+    public void StopTrack()
+    {
+        audioSource.Pause();
+    }
+
+    public void PlayTrack()
+    {
+        audioSource.Play();
+    }
 }

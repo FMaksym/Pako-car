@@ -14,6 +14,7 @@ public class CarCollision : MonoBehaviour
             {
                 IsLose = true;
                 _eventManager.GameOver();
+                _eventManager.ZeroDeathCounter();
             }
         }
     }

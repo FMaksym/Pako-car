@@ -11,7 +11,6 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         float musicVolume = PlayerPrefs.GetFloat(MusicVolumeKey);
-        Debug.Log(musicVolume);
         float soundVolume = PlayerPrefs.GetFloat(SoundVolumeKey);
         SetMusicVolume(musicAudioMixer, musicVolume, MusicVolumeKey);
     }
@@ -78,7 +77,7 @@ public class AudioManager : MonoBehaviour
     {
         float musicVolume = PlayerPrefs.GetFloat(MusicVolumeKey);
         float soundVolume = PlayerPrefs.GetFloat(SoundVolumeKey);
-        musicText.text = (musicVolume + 100) + "%";
-        musicText.text = (soundVolume + 100) + "%";
+        musicText.text = (musicVolume * 100 + 100) + "%";
+        soundText.text = (soundVolume * 100 + 100) + "%";
     }
 }

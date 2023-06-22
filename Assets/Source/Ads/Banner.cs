@@ -5,7 +5,7 @@ using System;
 
 public class Banner : MonoBehaviour
 {
-    public BannerView _bannerView;
+    private BannerView _bannerView;
 
     public void Start()
     {
