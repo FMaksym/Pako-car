@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 4602382075929289839}
   - component: {fileID: 5972903197475195809}
   - component: {fileID: 8179848635281550073}
+  - component: {fileID: 2577113558867668583}
   m_Layer: 0
   m_Name: Policecar
   m_TagString: Untagged
@@ -364,14 +365,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controll: 1
   steerInput: 0
-  _moveSpeed: 10
+  _moveSpeed: 9
   _steerAngle: 21
   _drag: 0.98
-  _maxSpeed: 15
-  _traction: 2.5
+  _maxSpeed: 12
+  _traction: 2
   IsStearing: 0
   trailRCircle: {fileID: 8641681681817692659}
   trailLCircle: {fileID: 8165082185452458032}
+  steerSmoothing: 5
 --- !u!54 &4602382075929289839
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -416,6 +418,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carController: {fileID: 7315902710713793096}
   _explosionParticle: {fileID: 3810442532162979820}
+--- !u!65 &2577113558867668583
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134962}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.046746355, y: 0.016043667, z: 0.017570185}
+  m_Center: {x: 0.0023277092, y: 0.00022129536, z: 0.000052844884}
 --- !u!1 &193266
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3522910745686058548}
   - component: {fileID: 5830051485298223694}
+  - component: {fileID: 5025587243595818590}
   m_Layer: 0
   m_Name: Event Manager
   m_TagString: Untagged
@@ -684,7 +700,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6fd3617d925024caa27fd77b1e9ddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathCounter: {fileID: 0}
+  deathCounter: {fileID: 5025587243595818590}
+--- !u!114 &5025587243595818590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6710128945595784159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9c451adb2514b42bc4e681a6dd5333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7626908223302566315
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,9 +7,9 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"last_search.DE949528" = "Baked"
+	"last_search.DE949528" = "Android"
 	"OpenInspectorPreview.DE949528" = "0"
-	"currentGroup.DE949528" = "settings"
+	"currentGroup.DE949528" = "all"
 }
 providers = {
 	adb = {

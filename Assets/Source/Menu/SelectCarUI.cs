@@ -57,7 +57,7 @@ public class SelectCarUI : MonoBehaviour, ICanvas
     private void Awake()
     {
         //PlayerPrefs.DeleteAll();
-        PlayerPrefs.SetInt("Coins", 50000);
+        PlayerPrefs.SetInt("Coins", 100000);
         _moneyAmountText.text = PlayerPrefs.GetInt("Coins").ToString();
     }
 
@@ -100,6 +100,7 @@ public class SelectCarUI : MonoBehaviour, ICanvas
 
     public void ChangeNext()
     {
+        soundManager.EventAudioSound(_selectCar);
         _car[_currentCarIndex].gameObject.SetActive(false);
         _currentCarIndex++;
         if (_currentCarIndex == _car.Count)
@@ -144,6 +145,7 @@ public class SelectCarUI : MonoBehaviour, ICanvas
 
     public void ChangePrevious()
     {
+        soundManager.EventAudioSound(_selectCar);
         _car[_currentCarIndex].gameObject.SetActive(false);
         _currentCarIndex--;
         if (_currentCarIndex == -1)
@@ -201,7 +203,7 @@ public class SelectCarUI : MonoBehaviour, ICanvas
         PlayerPrefs.SetInt("SelectedCar", _currentCarIndex);
         _selectCarButton.SetActive(false);
         _equipedCarButton.SetActive(true);
-        soundManager.EventAudioSound(_notEnoughtMoney);
+        soundManager.EventAudioSound(_selectCar);
     }
 
     public void OnClickBuyCar()

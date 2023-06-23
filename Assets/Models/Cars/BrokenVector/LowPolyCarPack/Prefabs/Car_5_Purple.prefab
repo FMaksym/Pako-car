@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: -9084401211687432125}
   - component: {fileID: 4033864165347713848}
   - component: {fileID: -1166717090577201303}
+  - component: {fileID: -2123252154628095979}
   m_Layer: 0
   m_Name: Car_5_Purple
   m_TagString: Untagged
@@ -199,11 +200,12 @@ MonoBehaviour:
   _moveSpeed: 8
   _steerAngle: 19
   _drag: 0.98
-  _maxSpeed: 12
-  _traction: 1
+  _maxSpeed: 11
+  _traction: 1.2
   IsStearing: 0
   trailRCircle: {fileID: 2585028426963604092}
   trailLCircle: {fileID: 8382598205047240205}
+  steerSmoothing: 5
 --- !u!54 &-9084401211687432125
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -248,6 +250,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carController: {fileID: 3967035600227983726}
   _explosionParticle: {fileID: 7955277488438172887}
+--- !u!65 &-2123252154628095979
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162266}
+  m_Material: {fileID: 13400000, guid: 2ec00ea642d074b45a3fa924d8e80cbb, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.04829146, y: 0.017758993, z: 0.016751697}
+  m_Center: {x: -0.000200243, y: -0.0008095744, z: -0.00006706715}
 --- !u!1 &166266
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,7 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6fd3617d925024caa27fd77b1e9ddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathCounter: {fileID: 0}
+  deathCounter: {fileID: 7536893978014851610}
 --- !u!114 &7536893978014851610
 MonoBehaviour:
   m_ObjectHideFlags: 0

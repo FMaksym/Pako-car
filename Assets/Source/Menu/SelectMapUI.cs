@@ -14,6 +14,7 @@ public class SelectMapUI : MonoBehaviour
 
     [SerializeField] private AudioClip _buyMap;
     [SerializeField] private AudioClip _selectMap;
+    [SerializeField] private AudioClip _nextMap;
     [SerializeField] private AudioClip _notEnoughtMoney;
 
     [SerializeField] private CoinsAmount _coins;
@@ -81,6 +82,7 @@ public class SelectMapUI : MonoBehaviour
 
     public void ChangeNext()
     {
+        soundManager.EventAudioSound(_nextMap);
         _map[_currentMapIndex].gameObject.SetActive(false);
         _currentMapIndex++;
         if (_currentMapIndex == _map.Count)
@@ -121,6 +123,7 @@ public class SelectMapUI : MonoBehaviour
 
     public void ChangePrevious()
     {
+        soundManager.EventAudioSound(_nextMap);
         _map[_currentMapIndex].gameObject.SetActive(false);
         _currentMapIndex--;
         if (_currentMapIndex == -1)
@@ -163,7 +166,7 @@ public class SelectMapUI : MonoBehaviour
     {
         UnchoisenMap();
 
-        //soundManager.EventAudioSound(_selectMap);
+        soundManager.EventAudioSound(_selectMap);
 
         _map[_currentMapIndex].IsSelected = true;
 

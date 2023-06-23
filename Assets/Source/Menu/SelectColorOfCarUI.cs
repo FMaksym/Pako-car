@@ -105,6 +105,7 @@ public class SelectColorOfCarUI : MonoBehaviour, ICanvas
 
     public void ChangeNext()
     {
+        soundManager.EventAudioSound(_selectColor);
         _listOfCarsColor[_selectCarUIManager._currentCarIndex]._carColorList[_currentColorIndex].gameObject.SetActive(false);
         _currentColorIndex++;
         if (_currentColorIndex == _listOfCarsColor[_selectCarUIManager._currentCarIndex]._carColorList.Count)
@@ -121,6 +122,7 @@ public class SelectColorOfCarUI : MonoBehaviour, ICanvas
 
     public void ChangePrevious()
     {
+        soundManager.EventAudioSound(_selectColor);
         _listOfCarsColor[_selectCarUIManager._currentCarIndex]._carColorList[_currentColorIndex].gameObject.SetActive(false);
         _currentColorIndex--;
         if (_currentColorIndex == -1)

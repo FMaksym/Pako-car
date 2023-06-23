@@ -140,10 +140,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controll: 1
   steerInput: 0
-  _moveSpeed: 9
+  _moveSpeed: 8
   _steerAngle: 21
-  _drag: 0.98
-  _maxSpeed: 14
+  _drag: 0.99
+  _maxSpeed: 11
   _traction: 1.2
   IsStearing: 0
   trailRCircle: {fileID: 2828277447880697665}

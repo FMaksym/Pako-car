@@ -141,7 +141,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &4069300058390714689
 BoxCollider:
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   policeCar: {fileID: 3012674127303835269}
-  _destroySound: {fileID: 8300000, guid: e0ad1d9e3e918b5419f26fd444b2f651, type: 3}
+  _destroySound: {fileID: 8300000, guid: dc8cb334eaff63e408525662b8f8a4d0, type: 3}
   _explosionParticle: {fileID: 3488358823809485810}
 --- !u!114 &4069300058390714717
 MonoBehaviour:

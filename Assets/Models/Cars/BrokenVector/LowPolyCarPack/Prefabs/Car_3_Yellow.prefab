@@ -113,14 +113,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controll: 1
   steerInput: 0
-  _moveSpeed: 15
-  _steerAngle: 20
-  _drag: 0.98
-  _maxSpeed: 14
+  _moveSpeed: 8
+  _steerAngle: 18
+  _drag: 0.985
+  _maxSpeed: 10
   _traction: 1.4
   IsStearing: 0
   trailRCircle: {fileID: 2141276421736178235}
   trailLCircle: {fileID: 1342011489456585900}
+  steerSmoothing: 5
 --- !u!54 &-7438887904617632226
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -870,7 +871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6fd3617d925024caa27fd77b1e9ddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathCounter: {fileID: 0}
+  deathCounter: {fileID: 1867225216471543164}
 --- !u!114 &1867225216471543164
 MonoBehaviour:
   m_ObjectHideFlags: 0
