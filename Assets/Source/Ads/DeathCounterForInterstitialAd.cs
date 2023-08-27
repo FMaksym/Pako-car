@@ -20,7 +20,6 @@ public class DeathCounterForInterstitialAd : MonoBehaviour
     public void Dead()
     {
         _deathValue -= 1;
-        Debug.Log(_deathValue + "death");
         PlayerPrefs.SetInt("DeathValue", _deathValue);
         ShowAd();
     }

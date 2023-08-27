@@ -12,7 +12,6 @@ public class CarController : MonoBehaviour
     public ControllType controll;
 
     public float steerInput;
-    //public CarDeath carDeath;
     public float _moveSpeed = 15f;
 
     [SerializeField] private float _steerAngle = 20f;

@@ -20,7 +20,6 @@ public class PoliceObstacle : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Obstacle>() || other.gameObject.GetComponent<CarController>() || other.gameObject.GetComponent<Police>())
         {
-            //policeCar.followSpeed = 0f;
             policeCar.speed = 0f;
             PlayDestroySound();
             _explosionParticle.SetActive(true);

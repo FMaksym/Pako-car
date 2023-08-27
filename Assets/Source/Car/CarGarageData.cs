@@ -11,8 +11,5 @@ public class CarGarageData : MonoBehaviour
     public bool IsBuy;
     public bool IsSelected;
 
-    //[Space, Header("Model of car for choise")]
-    //public GameObject ModelForSelect;
-
     public CarConfig CarConfig => _carConfig;
 }

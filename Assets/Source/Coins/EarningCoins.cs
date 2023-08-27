@@ -15,9 +15,7 @@ public class EarningCoins : MonoBehaviour
     public int AddCoinsFromTime(float gameTime)
     {
         int time = Convert.ToInt32(gameTime);
-        Debug.Log("time "+time);
         _coinsFromTime = time * _valueMultiplierMoneyPerTime;
-        Debug.Log("coinsFromTime: " + _coinsFromTime);
         _allCoinsForGame += _coinsFromTime;
         _coins.AddCoins(_allCoinsForGame);
         return _coinsFromTime;

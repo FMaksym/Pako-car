@@ -20,14 +20,10 @@ public class PoliceCarFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Calculate direction to the player's car
         Vector3 directionToPlayer = _carController.transform.position - transform.position;
-        //directionToPlayer.y = 0f; // Optional: Ensure the police car stays on the same height level
 
-        // Move towards the player's car
         rb.velocity = directionToPlayer.normalized * followSpeed;
 
-        // Rotate the police car to face the player's car
         if (directionToPlayer.magnitude > 0.1f && followSpeed > 0f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);

@@ -15,14 +15,14 @@ public class PoliceCarSpawner : MonoBehaviour
 
     private CarController carController;
     private CarCollision carCollision;
-    private DiContainer container; // Добавленная зависимость
+    private DiContainer container;
 
     [Inject]
     public void Construct(CarController carController, CarCollision carCollision, DiContainer container)
     {
         this.carController = carController;
         this.carCollision = carCollision;
-        this.container = container; // Инициализация зависимости
+        this.container = container;
     }
 
     private void Start()
@@ -41,11 +41,6 @@ public class PoliceCarSpawner : MonoBehaviour
             {
                 int randomIndex = Random.Range(0, _spawnPoints.Count);
                 Transform spawnPoint = _spawnPoints[randomIndex];
-
-                // Здесь происходит спавн PoliceCar с использованием Zenject для доступа к CarController
-                //container.InstantiatePrefab(policeCarPrefab, spawnPoint.position, spawnPoint.rotation, parentTransform)
-                //     .GetComponent<PoliceCarFollow>()
-                //     .SetCarController(carController);
 
                 container.InstantiatePrefab(policeCarPrefab, spawnPoint.position, spawnPoint.rotation, parentTransform)
                      .GetComponent<Follow>()

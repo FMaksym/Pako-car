@@ -38,7 +38,6 @@ public class CarDeath : MonoBehaviour
         carController._moveSpeed = 0;
         _explosionParticle.SetActive(true);
         StartCoroutine(Wait(4));
-        Debug.Log(PlayerPrefs.GetInt("Coins").ToString());
         StartCoroutine(WaitAndSetCoinsWalue(1));
         
     }
